@@ -24,7 +24,6 @@ tsel = 10   #내용 요약의 빈도
 cset = ("ai assint, Previous Conversations:")   #ai의 시작 캐릭터
 smru = ("Summarize the following by the rules below. 1. reveal the speaker's personality 2. summarize the content of the conversation succinctly 3. in the shortest possible length")   #ai의 요약 규칙
 
-#from
 while True: #채팅 내용
     usnp = input("내용 입력: ") 
     cnxt = (cset, clst), 
@@ -39,9 +38,7 @@ while True: #채팅 내용
     print(completion.choices[0].message)
     pvcv = open("pvcv.txt", 's')
     pvcv.write(completion.choices[0].message)
-#to
-
-#to change 1
+#정리완료--------------------------------------------------------------------------------
     tick + 1
 
     if tick < tsel: #채팅 요약
@@ -58,9 +55,7 @@ while True: #채팅 내용
         tick = 0
         tsel + 1
         print("내용 요약됨")
-#XXXXXXXXXXXXXXXXX
 
-#to change 2
     elif tsel < smcu: #요약 내용의 재처리
          completion = client.chat.completions.create(
             model="gpt-4",
@@ -71,13 +66,12 @@ while True: #채팅 내용
         )
         slst = clst
         clst = []
-        clst = completion.choices[0].message
+        clst = (completion.choices[0].message)
         tsel = 0
         print("재처리 완료")
-#XXXXXXXXXXXXXXXXX
-            
-        elif usnp == "/save":
-            fact = 0
+    
+    elif usnp == ("/save"):
+        fact = 0
 
-        elif usnp == "/exit":
-            fact = 0
+    elif usnp == ("/exit"):
+        fact = 0
